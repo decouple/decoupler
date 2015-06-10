@@ -1,4 +1,4 @@
-decoupler
+decouple/decoupler
 =========
 
-Hack dependency injector based on reflection created for the Decouple framework
+Hack reflective dependency injector created for Decouple Framework.
