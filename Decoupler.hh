@@ -208,4 +208,20 @@ class Decoupler {
       );
     }
   }
+
+  /**
+   * Get the name of the class and/or method that calls this function
+   * @return {string} The name of the class and/or method that called this function
+   */
+  static function getCaller() : string {
+    $t = debug_backtrace();
+    $r = "";
+    if(strlen($t[2]['class']) > 0) {
+      $r = $t[2]['class'] . '::';
+    }
+    if(strlen($t[2]['class']) > 0) {
+      $r = $t[2]['function'];
+    }
+    return $r;
+  }
 }
