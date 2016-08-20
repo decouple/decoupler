@@ -8,13 +8,16 @@ use ReflectionFunction;
 use Exception;
 class Decoupler {
   public function __construct(protected Map<string, mixed> $dependencies) {}
-  public function setAll(Map<string, mixed> $dependencies): void {
+  public function setAll(Map<string, mixed> $dependencies, bool $verify = true): void {
     foreach ($dependencies as $name => $dependency) {
-      $this->set($name, $dependency);
+      $this->set($name, $dependency, $verify);
     }
   }
-  public function set(string $name, mixed $dependency): void {
-    $this->verifyName($name);
+  public function set(string $name, mixed $dependency, bool $verify = true): void {
+    if($verify) {
+      $this->verifyName($name);
+    }
+
     $this->dependencies->set($name, $dependency);
   }
   public function contains(string $name): bool {
