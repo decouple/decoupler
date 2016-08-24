@@ -38,7 +38,7 @@ class Decoupler {
   /**
    * Assert that the given class exists
    */
-  protected function verifyName(string $name): void {
+  public function verifyName(string $name): void {
     if (!class_exists($name)) {
       throw new \Exception(
         sprintf("%s is not a registered class name [Decoupler]", $name),
@@ -119,7 +119,7 @@ class Decoupler {
     return $rf->invokeArgs($params->toArray());
   }
 
-  protected function functionParams(ReflectionFunction $rf): Vector<mixed> {
+  public function functionParams(ReflectionFunction $rf): Vector<mixed> {
     $rp = $rf->getParameters();
     $params = Vector {};
     foreach ($rp as $param) {
@@ -145,7 +145,7 @@ class Decoupler {
    * @param  ReflectionMethod           $rm           The ReflectionMethod
    * @return Vector<mixed>                            A vector of injected parameters
    */
-  protected function methodParams(ReflectionMethod $rm): Vector<mixed> {
+  public function methodParams(ReflectionMethod $rm): Vector<mixed> {
     $rp = $rm->getParameters();
     $params = Vector {};
     if ($rp) {
